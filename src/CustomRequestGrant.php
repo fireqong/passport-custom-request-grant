@@ -96,7 +96,7 @@ class CustomRequestGrant extends AbstractGrant
      */
     protected function getUserEntityByRequest(Request $request)
     {
-        if (is_null($model = config('auth.providers.users.model'))) {
+        if (is_null($model = config('auth.providers.' . config('auth.guards.api.provider') . '.model'))) {
             throw OAuthServerException::serverError('Unable to determine user model from configuration.');
         }
 
